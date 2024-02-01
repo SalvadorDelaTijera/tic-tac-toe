@@ -1,5 +1,17 @@
 .board-row{
- background-color: tomato;
- padding: .1rem;
-}
+ background-color: rgb(230, 230, 230);
+ justify-content: center;
+ width:fit-content;
 
+}
+.status{
+  background-color: mediumspringgreen;
+  border-radius: 50rem;
+  height: 2rem;
+  width: 15rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
+}
