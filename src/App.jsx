@@ -8,19 +8,27 @@ const App = () => {
   const [squares, setSquares]=useState(Array(9).fill(null))
 
   const handlerClick=(i)=>{
-    if (squares[i]) {
+    if (calculateWinner(squares) || (squares[i])) {
       return;
     }
-    const nextSqueres=squares.slice();
+    const nextSquares=squares.slice();
 
     if (xIsnext){
-      nextSqueres[i]= 'X';
+      nextSquares[i]= 'X';
     }else{
-      nextSqueres[i]= "O"
+      nextSquares[i]= "O"
     }
-    setSquares(nextSqueres); //setSqueres permite a react saber que el estado del ocmp ha cambiado
+    setSquares(nextSquares); //setSqueres permite a react saber que el estado del ocmp ha cambiado
     setXIsNext(!xIsnext);
   }
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Ganador: " + winner;
+  } else {
+    status = "Siguiente jugador: " + (xIsnext ? "X" : "O");
+  }
+
   return (
     <>
     <div className='board-row'>
@@ -40,6 +48,7 @@ const App = () => {
       <Square value={squares[7]} onSquareClick={()=>handlerClick(7)}/>
       <Square value={squares[8]} onSquareClick={()=>handlerClick(8)}/>
     </div>
+    <div className='status'>{status}</div>
     </>
 
   );
@@ -56,6 +65,7 @@ const App = () => {
       [2, 4, 6]
     ];
     for(let i = 0; i <lines.length; i++){
+      const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
