@@ -3,50 +3,51 @@ import "./App.css"
 import Square from './Square/Square'
 import { useState } from 'react'
 
-const App = () => {
-  const [xIsnext, setXIsNext] = useState(true);
-  const [squares, setSquares]=useState(Array(9).fill(null))
+const App = ({xIsNext,  squares, onPlay}) => {
+  //const [xIsnext, setXIsNext] = useState(true);
+  //const [squares, setSquares]=useState(Array(9).fill(null))
 
-  const handlerClick=(i)=>{
-    if (calculateWinner(squares) || (squares[i])) {
+  function handleClick(i) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    const nextSquares=squares.slice();
 
-    if (xIsnext){
+    const nextSquares = squares.slice();
+    if (xIsNext){
       nextSquares[i]= 'X';
     }else{
       nextSquares[i]= "O"
     }
-    setSquares(nextSquares); //setSqueres permite a react saber que el estado del ocmp ha cambiado
-    setXIsNext(!xIsnext);
+    onPlay(nextSquares)
+    //setSquares(nextSquares); //setSqueres permite a react saber que el estado del ocmp ha cambiado
+    //setIsNext(!xIsNext);
   }
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = "Ganador: " + winner;
   } else {
-    status = "Siguiente jugador: " + (xIsnext ? "X" : "O");
+    status = "Siguiente jugador: " + (xIsNext ? "X" : "O");
   }
 
   return (
     <>
     <div className='board-row'>
-      <Square value={squares[0]} onSquareClick={()=>handlerClick(0)}/>
-      <Square value={squares[1]} onSquareClick={()=>handlerClick(1)}/>
-      <Square value={squares[2]} onSquareClick={()=>handlerClick(2)} />
+      <Square value={squares[0]} onSquareClick={()=>handleClick(0)}/>
+      <Square value={squares[1]} onSquareClick={()=>handleClick(1)}/>
+      <Square value={squares[2]} onSquareClick={()=>handleClick(2)} />
     </div>
 
     <div className='board-row'>
-      <Square value={squares[3]} onSquareClick={()=>handlerClick(3)}/>
-      <Square value={squares[4]} onSquareClick={()=>handlerClick(4)}/>
-      <Square value={squares[5]} onSquareClick={()=>handlerClick(5)}/>
+      <Square value={squares[3]} onSquareClick={()=>handleClick(3)}/>
+      <Square value={squares[4]} onSquareClick={()=>handleClick(4)}/>
+      <Square value={squares[5]} onSquareClick={()=>handleClick(5)}/>
     </div>
 
     <div className='board-row'>
-      <Square value={squares[6]} onSquareClick={()=>handlerClick(6)}/>
-      <Square value={squares[7]} onSquareClick={()=>handlerClick(7)}/>
-      <Square value={squares[8]} onSquareClick={()=>handlerClick(8)}/>
+      <Square value={squares[6]} onSquareClick={()=>handleClick(6)}/>
+      <Square value={squares[7]} onSquareClick={()=>handleClick(7)}/>
+      <Square value={squares[8]} onSquareClick={()=>handleClick(8)}/>
     </div>
     <div className='status'>{status}</div>
     </>
