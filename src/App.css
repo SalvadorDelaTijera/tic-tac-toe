@@ -1,8 +1,7 @@
 .board-row{
- background-color: rgb(230, 230, 230);
+ background-color: rgb(125, 213, 48);
  justify-content: center;
  width:fit-content;
-
 }
 .status{
   background-color: mediumspringgreen;
@@ -15,3 +14,4 @@
   font-style: italic;
   font-weight: 500;
 }
+

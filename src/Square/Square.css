@@ -1,5 +1,11 @@
-.square{
-  color: blue;
-  height: 5rem;
-  width: 5rem;
-}             
+.square {
+   height: 2rem;
+   width: 2rem;
+   border-color: black 2px;
+   color: rgb(5, 134, 121);
+   background-color: white;
+   text-align: center;
+   font-size: larger;
+   font-weight: 700;
+   font-family: Verdana, Geneva, Tahoma, sans-serif
+  };
