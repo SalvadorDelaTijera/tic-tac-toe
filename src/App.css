@@ -1,10 +1,12 @@
 .board-row{
- background-color: rgb(125, 213, 48);
+ background-color: rgb(167, 167, 167);
  justify-content: center;
  width:fit-content;
+ height: fit-content;
+ justify-content: center;
 }
 .status{
-  background-color: mediumspringgreen;
+  background-color: rgb(41, 115, 169);
   border-radius: 50rem;
   height: 2rem;
   width: 15rem;
@@ -13,5 +15,10 @@
   text-align: center;
   font-style: italic;
   font-weight: 500;
+  color: aliceblue;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  padding-top: 1.5rem;
 }
 
